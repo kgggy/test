@@ -27,27 +27,7 @@ public class MainApp {
 			} else if (menu == 5) {
 				oneList();
 			} else if (menu == 6) {
-
-				int engMax = 0;
-				for (int i = 0; i < studentArray.length; i++) {
-					if (studentArray[i] != null) {
-						if (studentArray[i].getEng() > engMax) {
-							engMax = studentArray[i].getEng();
-						}
-					}
-				}
-				System.out.println("영어과목 최고점 > " + engMax);
-
-				int mathMax = 0;
-				for (int i = 0; i < studentArray.length; i++) {
-					if (studentArray[i] != null) {
-						if (studentArray[i].getMath() > mathMax) {
-							mathMax = studentArray[i].getMath();
-						}
-					}
-				}
-				System.out.println("수학과목의 최고점수 : " + mathMax);
-
+				details();
 			} else if (menu == 7) {
 				System.out.println("프로그램을 종료합니다.");
 				break;
@@ -133,6 +113,48 @@ public class MainApp {
 				}
 			}
 		}
+	}
+	
+	public static void details() {
+		int engMax = 0;
+		Student engMaxStudent = null;
+		for (int i = 0; i < studentArray.length; i++) {
+			if (studentArray[i] != null) {
+				if (studentArray[i].getEng() > engMax) {
+					engMax = studentArray[i].getEng();
+					engMaxStudent = studentArray[i];
+				}
+			}
+		}
+		System.out.println("영어과목 최고점 > " + engMax);
+		System.out.println(engMaxStudent.showInfo());
+
+		int mathMax = 0;
+		Student mathMaxStudent = null;
+		for (int i = 0; i < studentArray.length; i++) {
+			if (studentArray[i] != null) {
+				if (studentArray[i].getMath() > mathMax) {
+					mathMax = studentArray[i].getMath();
+					mathMaxStudent = studentArray[i];
+				}
+			}
+		}
+		System.out.println("수학과목의 최고점수 : " + mathMax);
+		System.out.println(mathMaxStudent.showInfo());
+		
+		int sum = 0;
+		Student sumMaxStudent = null;
+		for (int i = 0; i < studentArray.length; i++) {
+			if (studentArray[i] != null) {
+				if (studentArray[i].getMath() + studentArray[i].getEng() > sum) {
+					sum = studentArray[i].getMath() + studentArray[i].getEng();
+					sumMaxStudent = studentArray[i];
+				}
+			}
+		}
+		System.out.println("합산 최고점수 : " + sum);
+		System.out.println(sumMaxStudent.showInfo());
+
 	}
 
 }// class
